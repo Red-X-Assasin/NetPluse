@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NetPulse</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Local Network Packet Sniffer</p>
+          <h1>NetPulse</h1>
+          <p class="subtitle">Capture, inspect, and export traffic from your own machine or local network.</p>
+        </div>
+        <div class="warning-box">
+          <strong>Permission note</strong>
+          <span>Raw packet capture often requires administrator/root privileges.</span>
+        </div>
+      </header>
+
+      <section class="controls">
+        <div class="control-group">
+          <label for="interfaceSelect">Interface</label>
+          <select id="interfaceSelect"></select>
+        </div>
+        <div class="control-group">
+          <label for="filterInput">Filter</label>
+          <input id="filterInput" placeholder="tcp, dns, 8.8.8.8, 80" />
+        </div>
+        <div class="button-row">
+          <button id="startButton">Start capture</button>
+          <button id="stopButton" class="secondary">Stop</button>
+          <button id="refreshButton" class="secondary">Refresh</button>
+        </div>
+      </section>
+
+      <main class="content-grid">
+        <section class="feed-panel">
+          <div class="panel-header">
+            <h2>Live feed</h2>
+            <span id="statusBadge">Idle</span>
+          </div>
+          <div id="packetFeed" class="packet-feed"></div>
+        </section>
+
+        <aside class="sidebar">
+          <section class="card">
+            <h3>Filters & export</h3>
+            <div class="button-row vertical">
+              <button id="exportJsonButton">Export JSON</button>
+              <button id="exportCsvButton" class="secondary">Export CSV</button>
+              <button id="exportPcapButton" class="secondary">Export PCAP</button>
+            </div>
+          </section>
+          <section class="card">
+            <h3>Stats</h3>
+            <div id="statsPanel" class="stats-panel"></div>
+          </section>
+          <section class="card">
+            <h3>Packet detail</h3>
+            <div id="detailPanel" class="detail-panel">
+              <p class="empty-state">Select a packet to inspect its layers and payload.</p>
+            </div>
+          </section>
+        </aside>
+      </main>
+    </div>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
